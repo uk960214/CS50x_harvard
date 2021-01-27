@@ -1,0 +1,11 @@
+sort1 uses: bubble sort
+
+How do you know?: running time varies largely between type of list
+
+sort2 uses: merge sort
+
+How do you know?: running time is rather consistent between type of lists, but always faster than sort 3
+
+sort3 uses: selection sort
+
+How do you know?: running time is rather consistent between type of lists, but always slower than sort 2
