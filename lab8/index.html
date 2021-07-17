@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+
+            function listen() {
+                const partOneButtons = document.querySelectorAll(".p1");
+                const partTwoButtons = document.querySelectorAll(".p2");
+
+                const changeButtonWrong = (e) => {
+                    e.target.style.backgroundColor = 'red';
+                }
+
+                const changeButtonRight = (e) => {
+                    e.target.style.backgroundColor = 'green';
+                }
+
+                const showResult = (line, result) => {
+                    line.style.display = 'block'
+                    if(result === 'right') {
+                        line.innerHTML = 'Correct!';
+                    } else {
+                        line.innerHTML = 'Incorrect';
+                    }
+                }
+
+                const checkAnswerOne = (e) => {
+                    let target = e.target;
+                    let resultLine = target.parentElement.previousElementSibling
+                    if (target.classList.contains('right')) {
+                        changeButtonRight(e);
+                        showResult(resultLine, 'right');
+                    } else {
+                        changeButtonWrong(e);
+                        showResult(resultLine, 'wrong');
+                    }
+                }
+
+                const checkAnswerTwo = (e) => {
+                    let input = e.target.previousElementSibling;
+                    let resultLine = input.previousElementSibling;
+                    if(input.value.toLowerCase() === 'zagreb') {
+                        changeButtonRight(e);
+                        showResult(resultLine,'right');
+                    } else {
+                        changeButtonWrong(e);
+                        showResult(resultLine, 'wrong');
+                    }
+                }
+
+                for(let button of partOneButtons) {
+                    button.addEventListener('click', () => { checkAnswerOne(event) });
+                };
+
+                for(let button of partTwoButtons) {
+                    button.addEventListener('click', () => { checkAnswerTwo(event) });
+                };
+            };
+
+            document.addEventListener('DOMContentLoaded', listen);
+
+        </script>
+
+    </head>
+    <body>
+
+        <div class="jumbotron">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <div>
+                    <h3 class="question1">Which city is not the capital city of the given country?</h3>
+                    <p class="result">Incorrect</p>
+                    <div class="buttons">
+                        <button class="p1 wrong">Republic of Korea - Seoul</button>
+                        <button class="p1 wrong">United States - Washington D.C.</button>
+                        <button class="p1 wrong">Germany - Berlin</button>
+                        <button class="p1 right">China - Shanghai</button>
+                        <button class="p1 wrong">Portugal - Lisbon</button>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <div>
+                    <h3 class="question2">What is the capital city of Croatia?</h3>
+                    <p class="result">Incorrect</p>
+                    <input type="text">
+                    <button class="p2">Check Answer</button>
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>
