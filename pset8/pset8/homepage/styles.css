@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    width: 80%;
+    margin: auto;
+}
+
+.content-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.img-container {
+    width: 50%;
+    padding: 1rem;
+}
+
+.content-desc {
+    width: 50%;
+    align-self: center;
+    padding: 1rem;
+    margin: 1rem;
+    font-size: 2rem;
+    font-weight: 500;
+
+}
+
+.img-container img {
+    width: 100%;
+}
+
+.center {
+    text-align: center;
+}
+
+
+.email-input-section {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-around;
+    background-color: #f4f4f4;
+    padding: 2rem;
+}
+
+.email-collect-notice {
+    width: 50%;
+    text-align: center;
+    align-self: center;
+}
+
+.email-input-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-area {
+    padding: 3rem;
+}
+
+.card {
+    overflow: hidden;
+}
+
+.card img {
+    max-height: 12rem;
+}
+
+.contact-details {
+    align-self: center;
+    padding: 1rem;
+    margin: 1rem;
+    font-size: 2rem;
+    font-weight: 500;
+
+}
