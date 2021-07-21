@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block main %}
+    <div class="section">
+        <h2>Your Portfolio</h2>
+        <table class="table table-primary table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Company Name</th>
+                    <th scope="col">Shares</th>
+                    <th scope="col">Avg Price per Share</th>
+                    <th scope="col">Current Price</th>
+                    <th scope="col">Current Value Total</th>
+                    <th scope="col">Buy</th>
+                    <th scope="col">Sell</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in portfolio %}
+                <tr>
+                    <th scope="row">{{ p.company }}</th>
+                    <td>{{ p.shares }}</td>
+                    <td>{{ p.avgPrice }}</td>
+                    <td>{{ p.current }}</td>
+                    <td>{{ p.currentTotal }}</td>
+                    <td>
+                        <form action="/buy" method="post">
+                            <div class="form-group">
+                                <input autofocus class="form-control" name="shares" placeholder="Shares" type="number" min="0">
+                            </div>
+                            <input type="hidden" value="{{ p.symbol }}" name="symbol">
+                            <button class="btn btn-primary" type="submit">Buy</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/sell" method="post">
+                            <div class="form-group">
+                                <input autofocus class="form-control" name="shares" placeholder="Shares" type="number" min="0">
+                            </div>
+                            <input type="hidden" value="{{ p.symbol }}" name="symbol">
+                            <button class="btn btn-primary" type="submit">sell</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Your Grand Total is {{ totals.gTotal }}</h2>
+        <h3>{{ totals.cash }} in cash and {{ totals.valueTotal }} in stock</h3>
+    </div>
+{% endblock %}
